@@ -3,12 +3,12 @@ const Auth = {
   session_key: "rp_auth_session_key",
 
   isLoggedIn() {
-    return sessionStorage.getItem(this.session_key) === true;
+    return sessionStorage.getItem(this.session_key) === "true";
   },
 
   login(password) {
     if (password === this.password) {
-      sessionStorage.setItem(this.session_key, true);
+      sessionStorage.setItem(this.session_key, "true");
       return true;
     }
     return false;
