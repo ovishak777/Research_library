@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Research Library</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/library.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Research Library</h1>
+        <button id="logout-btn">Log out</button>
+      </header>
+
+      <form id="add-form" class="add-form">
+        <input
+          type="text"
+          id="link-input"
+          placeholder="Paste a link or DOI (e.g. 10.1038/s41586-020-2649-2)"
+        />
+        <button type="submit">Add</button>
+      </form>
+      <div class="form-msg" id="form-msg"></div>
+
+      <ul id="paper-list"></ul>
+      <div class="empty-msg hidden" id="empty-msg">
+        No papers saved yet. Paste a link or DOI above to get started.
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/library.js"></script>
+  </body>
+</html>

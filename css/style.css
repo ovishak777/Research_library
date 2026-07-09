@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  flex: 1;
+  margin: 1px;
+  font-family:
+    Times New Roman,
+    Times,
+    serif;
+  background-color: rgb(177, 206, 224);
+}
