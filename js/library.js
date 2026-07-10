@@ -4,6 +4,7 @@ const session_key = "rp_auth_session_key";
 
 const form = document.getElementById("add-form");
 const input = document.getElementById("link-input");
+const nameInput = document.getElementById("name-input");
 const formMsg = document.getElementById("form-msg");
 const list = document.getElementById("paper-list");
 const emptyMsg = document.getElementById("empty-msg");
@@ -53,10 +54,14 @@ function render() {
     typeLabel.className = "entry-type";
     typeLabel.textContent = entry.type === "doi" ? "DOI" : "Link";
 
-    const valueLabel = document.createElement("span");
+    const valueLabel = document.createElement("button");
+    valueLabel.type = "button";
     valueLabel.className = "entry-value";
-    valueLabel.textContent = entry.value;
+    valueLabel.textContent = entry.name || entry.value;
     valueLabel.title = entry.value;
+    valueLabel.addEventListener("click", () => {
+      window.open(SEARCH.getOpenUrl(entry), "_blank", "noopener");
+    });
 
     info.appendChild(typeLabel);
     info.appendChild(valueLabel);
@@ -95,6 +100,13 @@ form.addEventListener("submit", (event) => {
   }
 
   const detected = SEARCH.detectType(raw);
+  const customName = nameInput.value.trim();
+
+  if (!customName) {
+    formMsg.textContent = "Give the link a short name before saving.";
+    formMsg.classList.add("error");
+    return;
+  }
 
   const alreadyExists = papers.some((p) => p.value === detected.value);
   if (alreadyExists) {
@@ -107,12 +119,14 @@ form.addEventListener("submit", (event) => {
     id: Date.now().toString(),
     type: detected.type,
     value: detected.value,
+    name: customName,
     dateAdded: new Date().toISOString().slice(0, 10),
   });
 
   save();
   render();
   input.value = "";
+  nameInput.value = "";
   formMsg.textContent = "";
   formMsg.classList.remove("error");
 });
