@@ -27,10 +27,11 @@
     Times New Roman,
     Times,
     serif;
+  padding-bottom: 5px;
 }
 
 .container input[type="text"] {
-  background: rgb(194, 184, 184);
+  background: rgb(245, 245, 245);
   align-items: center;
   justify-content: center;
   border: 2px solid black;
@@ -40,7 +41,7 @@
 }
 
 .container input#name-input {
-  background: rgb(194, 184, 184);
+  background: rgb(245, 245, 245);
   border: 2px solid black;
   height: 40px;
   width: 100%;
@@ -88,5 +89,8 @@
 .no_paper_msg {
   color: white;
   font-size: 13.5px;
-  font-family: "Times New Roman", Times, serif;
+  font-family:
+    Times New Roman,
+    Times,
+    serif;
 }
