@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(216, 198, 198);
+  background-color: rgb(50, 50, 85);
   height: auto;
   width: 400px;
   border-radius: 5px;
@@ -11,7 +11,7 @@
 }
 
 .container h1 {
-  color: rgb(70, 2, 2);
+  color: white;
   font-family:
     Times New Roman,
     Times,
@@ -83,4 +83,10 @@
   border-radius: 20px;
   color: white;
   font-size: 18px;
+}
+
+.no_paper_msg {
+  color: white;
+  font-size: 13.5px;
+  font-family: "Times New Roman", Times, serif;
 }
