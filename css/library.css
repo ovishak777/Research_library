@@ -52,7 +52,7 @@
 .entry-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   min-width: 0; /* allow child to shrink/truncate instead of overflowing */
   flex: 1;
 }
