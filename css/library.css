@@ -1,37 +1,36 @@
 .container {
   background-color: rgb(50, 50, 85);
   height: auto;
-  width: 100%;
+  max-width: auto;
+  width: 800px;
+  box-sizing: border-box;
   border-radius: 5px;
+  margin: 0 auto;
   border: 3px solid rgb(16, 72, 108);
+}
+
+header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.header1 {
+  color: grey;
+  margin: 0;
+}
+
+.log-out-button {
+  height: auto;
+  color: blue;
+}
+
+.add-form {
+  display: flex;
   flex-direction: column;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.container h1 {
-  color: white;
-  font-family:
-    Times New Roman,
-    Times,
-    serif;
-  display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.container button[id="logout-btn"] {
-  background: rgb(106, 125, 137);
-  height: 20px;
-  text-align: center;
-  color: white;
-  font-family:
-    Times New Roman,
-    Times,
-    serif;
-  padding-bottom: 5px;
+  width: 100%;
+  gap: 6px;
 }
 
 .container input[type="text"] {
@@ -57,7 +56,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0; /* allow child to shrink/truncate instead of overflowing */
+  min-width: 0;
   flex: 1;
 }
 
@@ -96,8 +95,5 @@
 .no_paper_msg {
   color: white;
   font-size: 13.5px;
-  font-family:
-    Times New Roman,
-    Times,
-    serif;
+  font-family: "Times New Roman", Times, serif;
 }
