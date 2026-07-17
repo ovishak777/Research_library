@@ -147,10 +147,10 @@ function putNotes() {
   const noteList = document.getElementById("note-list");
 
   const li = document.createElement("li");
-  li.className = "note-item";
 
-  const noteText = document.createElement("span");
-  noteText.textContent = text;
+  const row = document.createElement("div");
+  row.className = "note-item";
+  row.appendChild(document.createTextNode(text));
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Dt";
@@ -159,8 +159,8 @@ function putNotes() {
     li.remove();
   });
 
-  li.appendChild(noteText);
-  li.appendChild(deleteBtn);
+  row.appendChild(deleteBtn);
+  li.appendChild(row);
   noteList.appendChild(li);
 
   noteInput.value = "";
