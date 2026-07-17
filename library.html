@@ -7,34 +7,43 @@
     <link rel="stylesheet" href="css/library.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1 class="header1">Research Library</h1>
-        <button class="log-out-button" id="logout-btn">Log out</button>
-      </header>
+    <div class="page-layout">
+      <div class="container">
+        <header>
+          <h1 class="header1">Research Library</h1>
+          <button class="log-out-button" id="logout-btn">Log out</button>
+        </header>
 
-      <form id="add-form" class="add-form">
-        <input
-          type="text"
-          id="link-input"
-          placeholder="Paste a link or DOI (e.g. 10.1038/s41586-020-2649-2)"
-        />
+        <form id="add-form" class="add-form">
+          <input
+            type="text"
+            id="link-input"
+            placeholder="Paste a link or DOI (e.g. 10.1038/s41586-020-2649-2)"
+          />
 
-        <input
-          type="text"
-          id="name-input"
-          placeholder="Short name (required)"
-          required
-        />
-        <button type="submit">Add</button>
-      </form>
-      <div class="form-msg" id="form-msg"></div>
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Short name (required)"
+            required
+          />
+          <button type="submit">Add</button>
+        </form>
+        <div class="form-msg" id="form-msg"></div>
 
-      <ul id="paper-list"></ul>
-      <div class="empty-msg hidden" id="empty-msg">
-        <div class="no_paper_msg">
-          No papers saved yet. Paste a link or DOI above to get started.
+        <ul id="paper-list"></ul>
+        <div class="empty-msg hidden" id="empty-msg">
+          <div class="no_paper_msg">
+            No papers saved yet. Paste a link or DOI above to get started.
+          </div>
         </div>
+      </div>
+
+      <div class="note-section">
+        <input type="text" id="note-input" placeholder="put the notes here" />
+        <button onclick="putNotes()">Add Note</button>
+        <h3>Important Notes</h3>
+        <ol id="note-list"></ol>
       </div>
     </div>
 

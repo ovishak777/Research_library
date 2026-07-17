@@ -1,6 +1,6 @@
 Auth.requireLogin();
 
-const session_key = "rp_auth_session_key";
+const papers_key = "rp_library_papers"; // was wrongly reusing the auth session key
 
 const form = document.getElementById("add-form");
 const input = document.getElementById("link-input");
@@ -13,7 +13,7 @@ const logoutBtn = document.getElementById("logout-btn");
 let papers = [];
 
 async function init() {
-  const stored = localStorage.getItem(session_key);
+  const stored = localStorage.getItem(papers_key);
 
   if (stored) {
     papers = JSON.parse(stored);
@@ -32,7 +32,7 @@ async function init() {
 }
 
 function save() {
-  localStorage.setItem(session_key, JSON.stringify(papers));
+  localStorage.setItem(papers_key, JSON.stringify(papers));
 }
 
 function render() {
@@ -134,3 +134,34 @@ form.addEventListener("submit", (event) => {
 logoutBtn.addEventListener("click", () => Auth.logout());
 
 init();
+
+function putNotes() {
+  const noteInput = document.getElementById("note-input");
+  const text = noteInput.value.trim();
+
+  if (text === "") {
+    alert("please write something");
+    return;
+  }
+
+  const noteList = document.getElementById("note-list");
+
+  const li = document.createElement("li");
+  li.className = "note-item";
+
+  const noteText = document.createElement("span");
+  noteText.textContent = text;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Dt";
+  deleteBtn.className = "note-delete-btn";
+  deleteBtn.addEventListener("click", () => {
+    li.remove();
+  });
+
+  li.appendChild(noteText);
+  li.appendChild(deleteBtn);
+  noteList.appendChild(li);
+
+  noteInput.value = "";
+}
