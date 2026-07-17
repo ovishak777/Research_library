@@ -135,6 +135,39 @@ logoutBtn.addEventListener("click", () => Auth.logout());
 
 init();
 
+const notes_key = "rp_library_notes";
+let notes = [];
+const noteList = document.getElementById("note-list");
+
+function saveNotes() {
+  localStorage.setItem(notes_key, JSON.stringify(notes));
+}
+
+function renderNotes() {
+  noteList.innerHTML = "";
+
+  notes.forEach((note) => {
+    const li = document.createElement("li");
+
+    const row = document.createElement("div");
+    row.className = "note-item";
+    row.appendChild(document.createTextNode(note.text));
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Dt";
+    deleteBtn.className = "note-delete-btn";
+    deleteBtn.addEventListener("click", () => {
+      notes = notes.filter((n) => n.id !== note.id);
+      saveNotes();
+      renderNotes();
+    });
+
+    row.appendChild(deleteBtn);
+    li.appendChild(row);
+    noteList.appendChild(li);
+  });
+}
+
 function putNotes() {
   const noteInput = document.getElementById("note-input");
   const text = noteInput.value.trim();
@@ -144,24 +177,21 @@ function putNotes() {
     return;
   }
 
-  const noteList = document.getElementById("note-list");
-
-  const li = document.createElement("li");
-
-  const row = document.createElement("div");
-  row.className = "note-item";
-  row.appendChild(document.createTextNode(text));
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Dt";
-  deleteBtn.className = "note-delete-btn";
-  deleteBtn.addEventListener("click", () => {
-    li.remove();
+  notes.push({
+    id: Date.now().toString(),
+    text: text,
   });
 
-  row.appendChild(deleteBtn);
-  li.appendChild(row);
-  noteList.appendChild(li);
+  saveNotes();
+  renderNotes();
 
   noteInput.value = "";
 }
+
+function initNotes() {
+  const stored = localStorage.getItem(notes_key);
+  notes = stored ? JSON.parse(stored) : [];
+  renderNotes();
+}
+
+initNotes();
